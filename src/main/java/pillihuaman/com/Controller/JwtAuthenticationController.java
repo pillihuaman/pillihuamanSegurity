@@ -73,15 +73,16 @@ public class JwtAuthenticationController {
 			//String codeString = bCryptPasswordEncoder.encode(password);
 
 			RespBase<RespUser> userResponse = userService.getUserByUserName(username);
+					
 			if (userResponse != null && userResponse.getPayload() != null) {
 				if (!MaestrosUtilidades.isEmpty(userResponse.getPayload().getUsername())) {
 					if (!MaestrosUtilidades.isEmpty(userResponse.getPayload().getMail())
 							|| !MaestrosUtilidades.isEmpty(password)) {
 						if (!MaestrosUtilidades.isEmpty(userResponse.getPayload().getPassword())
-								|| !MaestrosUtilidades.isEmpty(userResponse.getPayload().getSalPassword())) {
+								|| !MaestrosUtilidades.isEmpty(userResponse.getPayload().getSal_Password())) {
 
-							valida = PasswordUtils.verifyUserPassword(password, userResponse.getPayload().getApiPassword(),
-									userResponse.getPayload().getSalPassword());
+							valida = PasswordUtils.verifyUserPassword(password, userResponse.getPayload().getApi_Password(),
+									userResponse.getPayload().getSal_Password());
 							if (valida == false) {
 								throw new UsernameNotFoundException("Users not found with username: " + username);
 							}
@@ -99,6 +100,7 @@ public class JwtAuthenticationController {
 				throw new UsernameNotFoundException("Users not found with username: " + username);
 			}
 			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
+
 
 		} catch (DisabledException e) {
 			throw new Exception("USER_DISABLED", e);

@@ -43,7 +43,7 @@ public class User extends AuditEntity implements Serializable{
 	@Column(name="mail")
 	private String mail;
 	
-	@Column(name="mobilPhone")
+	@Column(name="mobil_Phone")
 	private String mobilPhone;
 
 	@Column(name="password")
@@ -63,8 +63,10 @@ public class User extends AuditEntity implements Serializable{
 	@JoinColumn(name="id_rol")
 	private Role role;
 
+	@Column(nullable = false, name = "enabled")
+	protected String enabled;
+	
 	public User() {super(); 
 	}
-
 
 }
