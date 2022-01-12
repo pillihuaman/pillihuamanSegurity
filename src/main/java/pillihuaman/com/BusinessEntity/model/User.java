@@ -52,8 +52,7 @@ public class User extends AuditEntity implements Serializable{
 	@Column(name="sal_Password")
 	private String salPassword;
 	
-	@Column(name="user")
-	private String user;
+
 	
 	@Column(name="username")
 	private String username;

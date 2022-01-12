@@ -41,6 +41,7 @@ pillihuaman\com\BusinessEntity\model\User.class
 pillihuaman\com\audit\AuditEndpointInterceptor.class
 pillihuaman\com\model\response\RespBase.class
 pillihuaman\com\Service\ColorService.class
+pillihuaman\com\Controller\GeneratePasswordController.class
 pillihuaman\com\RequestResponse\JwtRequest.class
 pillihuaman\com\JwtTokenUtil.class
 pillihuaman\com\Service\Implement\ColorServiceImpl.class
