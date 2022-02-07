@@ -5,11 +5,13 @@ pillihuaman\com\model\response\RespBase$Status$Error.class
 pillihuaman\com\audit\AuditEntityInterceptor$1.class
 pillihuaman\com\model\response\RespBase$Status.class
 pillihuaman\com\Adapters\OracleAdapter.class
+pillihuaman\com\Help\EnumErrores.class
 pillihuaman\com\Help\ConvertClass.class
 pillihuaman\com\Help\GenericList.class
 pillihuaman\com\JwtRequestFilter.class
 pillihuaman\com\AppPropertiesConfig.class
 pillihuaman\com\model\response\RespUser.class
+pillihuaman\com\Help\Constantes.class
 pillihuaman\com\Repository\ColorRepository.class
 pillihuaman\com\security\MyJsonWebToken$Aplication.class
 pillihuaman\com\model\request\ReqBase.class
@@ -49,6 +51,7 @@ pillihuaman\com\Adapters\MySqlAdapter.class
 pillihuaman\com\security\MyJsonWebToken$User.class
 pillihuaman\com\security\VerifyProvidedPassword.class
 pillihuaman\com\audit\AuditEntityInterceptor$TableLog.class
+pillihuaman\com\Controller\UserController.class
 pillihuaman\com\WebSecurityConfig.class
 pillihuaman\com\Help\MaestrosUtilidades.class
 pillihuaman\com\Help\Constants.class
