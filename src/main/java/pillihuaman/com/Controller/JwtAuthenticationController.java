@@ -48,7 +48,7 @@ public class JwtAuthenticationController {
 	public ResponseEntity<?> createAuthenticationToken(@RequestHeader String username, @RequestHeader String password,  @RequestBody JwtRequest authenticationRequest) throws Exception {
 		authenticate(username, password,
 				authenticationRequest.getMail());
-		final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
+		final UserDetails userDetails = userDetailsService.loadUserByUsername(username);
 		final String token = jwtTokenUtil.generateToken(userDetails);
 		AuthenticationResponse auth = new AuthenticationResponse();
 		auth.setToken(token);
@@ -99,7 +99,7 @@ public class JwtAuthenticationController {
 			} else {
 				throw new UsernameNotFoundException("Users not found with username: " + username);
 			}
-			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
+		authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
 
 
 		} catch (DisabledException e) {

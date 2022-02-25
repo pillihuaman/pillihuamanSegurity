@@ -12,7 +12,6 @@ public static  RespUser	UserTblToUserDTO(User request){
 	RespUser resp= new RespUser();
 	resp.setMail(request.getMail());
 	resp.setUsername(request.getUsername());
-	resp.setId_user(request.getIdUser());
 	resp.setAlias(request.getAlias());
 	resp.setApi_Password(request.getApiPassword());
 	resp.setSal_Password(request.getSalPassword());

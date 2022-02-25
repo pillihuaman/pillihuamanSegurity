@@ -48,7 +48,7 @@ public class GeneratePasswordController {
 	public ResponseEntity<?> createAuthenticationToken( @RequestBody JwtRequest authenticationRequest) throws Exception {
 		String salt = PasswordUtils.getSalt(30);
 		String mySecurePassword = PasswordUtils.generateSecurePassword(authenticationRequest.getPassword(), salt);
-		String codeString = bCryptPasswordEncoder.encode(authenticationRequest.getPassword());
+		String codeString = bCryptPasswordEncoder.encode(mySecurePassword);
 
 		System.out.println("salt   "+salt);
 		System.out.println("Api Password   "+mySecurePassword);
