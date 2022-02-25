@@ -6,6 +6,7 @@ pillihuaman\com\audit\AuditEntityInterceptor$1.class
 pillihuaman\com\model\response\RespBase$Status.class
 pillihuaman\com\Adapters\OracleAdapter.class
 pillihuaman\com\Help\EnumErrores.class
+pillihuaman\com\basebd\user\domain\User.class
 pillihuaman\com\Help\ConvertClass.class
 pillihuaman\com\Help\GenericList.class
 pillihuaman\com\JwtRequestFilter.class
@@ -24,8 +25,10 @@ pillihuaman\com\security\Role.class
 pillihuaman\com\Service\UserService.class
 pillihuaman\com\audit\AuditableEntity.class
 pillihuaman\com\Controller\HelloWorldController.class
+pillihuaman\com\basebd\user\domain\dao\UserProcessRepository.class
 pillihuaman\com\Service\Implement\UserServiceImpl.class
 pillihuaman\com\BusinessEntity\model\AuditEntity.class
+pillihuaman\com\BusinessEntity\model\DynamicQuery.class
 pillihuaman\com\model\request\Base.class
 pillihuaman\com\ApplicationInitializer.class
 pillihuaman\com\audit\AuditEndpointInterceptor$EndpointLog.class
