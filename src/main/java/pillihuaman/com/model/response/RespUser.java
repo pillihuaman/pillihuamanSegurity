@@ -1,6 +1,4 @@
 package pillihuaman.com.model.response;
-import java.math.BigInteger;
-
 import com.googlecode.jmapper.annotations.JGlobalMap;
 
 import lombok.Getter;
@@ -12,9 +10,9 @@ import lombok.Setter;
 @Setter
 public class RespUser {
 	
-	private BigInteger id_user;
+	private  int id_user;
 	private String alias;
-	private BigInteger id_system;
+	private  int id_system;
 	private String mail;
 	private String mobil_Phone;
 	private String user;
@@ -22,8 +20,8 @@ public class RespUser {
 	private String api_Password;
 	private String password;
 	private String sal_Password;
-	private BigInteger enabled;
-	private BigInteger id_rol;
+	private   int enabled;
+	private int id_rol;
 
 }
 

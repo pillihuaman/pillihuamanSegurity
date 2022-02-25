@@ -14,4 +14,7 @@ public interface  UserProcessRepository extends MongoRepository<User, String>  {
 	
 	 @Query("{ 'mail' : ?0 }")
 	  List<User> findUserByMail(String mail);
+	 
+	 @Query("{ 'username' : ?0 }")
+	  List<User> findUserName(String mail);
 }
