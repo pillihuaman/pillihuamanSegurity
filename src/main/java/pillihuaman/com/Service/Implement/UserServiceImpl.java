@@ -54,7 +54,7 @@ public class UserServiceImpl implements UserService {
 			for (pillihuaman.com.basebd.user.domain.User user : lis) {
 				obj.setAlias(user.getAlias());
 				obj.setApi_Password(user.getApiPassword());
-				obj.setId_system(user.getIdSystem());
+				
 				obj.setMail(user.getMail());
 				obj.setPassword(user.getPassword());
 				obj.setSal_Password(user.getSalPassword());
