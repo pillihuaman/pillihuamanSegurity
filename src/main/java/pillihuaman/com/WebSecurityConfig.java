@@ -80,11 +80,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		httpSecurity.cors().and().csrf().disable()
 				// dont authenticate this particular request
 				.authorizeRequests()
-<<<<<<< HEAD
-				.antMatchers("/public/v1/user/register", "/private/v1/user/register", "/authenticate", "/userService/usersIns", "/WebServiceImagen/GetPicture","/authenticate/generatePassword").permitAll().
-=======
+
 				.antMatchers("http://localhost:8081/public/v1/user/register","/public/v1/user/register", "/private/v1/user/register", "/authenticate", "/userService/usersIns", "/WebServiceImagen/GetPicture","/authenticate/generatePassword").permitAll().
->>>>>>> 98f5e48146d50d19f84653cd03a6a4dabe431b35
+
 
 				// all other requests need to be authenticated
 				anyRequest().authenticated().and().
