@@ -72,7 +72,7 @@ public class JwtAuthenticationController {
 
 			//String codeString = bCryptPasswordEncoder.encode(password);
 
-			RespBase<RespUser> userResponse = userService.getUserByUserName(username);
+			RespBase<RespUser> userResponse = userService.getUserByMail(username);
 					
 			if (userResponse != null && userResponse.getPayload() != null) {
 				if (!MaestrosUtilidades.isEmpty(userResponse.getPayload().getUsername())) {

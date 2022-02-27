@@ -71,7 +71,7 @@ public class GeneratePasswordController {
 
 			//String codeString = bCryptPasswordEncoder.encode(password);
 
-			RespBase<RespUser> userResponse = userService.getUserByUserName(username);
+			RespBase<RespUser> userResponse = userService.getUserByMail(username);
 			
 			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
 			

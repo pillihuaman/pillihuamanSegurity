@@ -45,15 +45,28 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public RespBase<RespUser> getUserByMail(String mail) {
 
+
 		RespBase<RespUser> respo = new RespBase<RespUser>();
-		User filtro = new User();
 
-		filtro.setMail(mail);
-		Example<User> example = Example.of(filtro);
-		List<User> lista = userRepository.findAll(example);
-		if (lista != null) {
+		try {
+			List<pillihuaman.com.basebd.user.domain.User> lis = userProcessRepository.findUserByMail(mail);
+			RespUser obj = new RespUser();
+			for (pillihuaman.com.basebd.user.domain.User user : lis) {
+				obj.setAlias(user.getAlias());
+				obj.setApi_Password(user.getApiPassword());
+				obj.setId_system(user.getIdSystem());
+				obj.setMail(user.getMail());
+				obj.setPassword(user.getPassword());
+				obj.setSal_Password(user.getSalPassword());
+				obj.setUsername(user.getUsername());
+			}
+			respo.setPayload(obj);
 
+		} catch (Exception e) {
+			respo.getStatus().setSuccess(Boolean.FALSE);
+			respo.getStatus().getError().getMessages().add(e.getMessage());
 		}
+		
 		return respo;
 	}
 
