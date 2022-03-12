@@ -1,5 +1,6 @@
 package pillihuaman.com.Service.Implement;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -21,6 +22,7 @@ import com.mongodb.client.MongoDatabase;
 
 import pillihuaman.com.BusinessEntity.model.AuditEntity;
 import pillihuaman.com.BusinessEntity.model.User;
+import pillihuaman.com.Help.ConvertClass;
 import pillihuaman.com.Repository.UserRepository;
 import pillihuaman.com.Service.UserService;
 import pillihuaman.com.basebd.user.domain.dao.UserProcessRepository;
@@ -29,16 +31,15 @@ import pillihuaman.com.model.response.RespBase;
 import pillihuaman.com.model.response.RespUser;
 import pillihuaman.com.security.PasswordUtils;
 
+
+
 @Component
 public class UserServiceImpl implements UserService {
-	@Autowired
+	@Autowired(required = false)
 	private UserRepository userRepository;
 
 	@Autowired(required = false)
 	private UserProcessRepository userProcessRepository;
-
-	@Autowired
-	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
 
 
@@ -73,19 +74,25 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public RespBase<RespUser> getUserByUserName(String username) {
 
+
+		// RespBase<RespColor> listacolor= colorService.getColorbyName("rojo");
+
+		// List<User> lstUser = userRepository.ListAllUser();
+		// User use = userRepository.ListUserByIdUser(2L);
+
 		RespBase<RespUser> respo = new RespBase<RespUser>();
 
 		try {
-			List<pillihuaman.com.basebd.user.domain.User> lis = userProcessRepository.findUserName(username);
-			RespUser obj = new RespUser();
-			for (pillihuaman.com.basebd.user.domain.User user : lis) {
-				obj.setAlias(user.getAlias());
-				obj.setApi_Password(user.getApiPassword());
-				obj.setId_system(user.getIdSystem());
-				obj.setMail(user.getMail());
-				obj.setPassword(user.getPassword());
-				obj.setSal_Password(user.getSalPassword());
-				obj.setUsername(user.getUsername());
+			User filtro = new User();
+
+			filtro.setUsername(username);
+			// filtro.setStatus(RegisterStatus.ACTIVE.getCode());
+			Example<User> example = Example.of(filtro);
+			List<User> lista = new ArrayList<>();
+			lista = userRepository.findAll(example);
+			if (lista != null && lista.size() > 0) {
+				respo.setPayload(ConvertClass.UserTblToUserDTO(lista.get(0)));
+
 			}
 
 		} catch (Exception e) {
@@ -104,7 +111,9 @@ public class UserServiceImpl implements UserService {
 			pillihuaman.com.basebd.user.domain.User filtro = new pillihuaman.com.basebd.user.domain.User();
 			String salt = PasswordUtils.getSalt(30);
 			String apiPasword = PasswordUtils.generateSecurePassword(request.getPassword(), salt);
-			String Password = bCryptPasswordEncoder.encode(request.getPassword());
+			BCryptPasswordEncoder en = new BCryptPasswordEncoder() ;
+			
+			String Password = en.encode(request.getPassword());
 			filtro.setId(new ObjectId());
 			filtro.setAlias("");
 			filtro.setApiPassword(apiPasword);
@@ -115,7 +124,7 @@ public class UserServiceImpl implements UserService {
 			filtro.setMobilPhone(request.getMobilPhone());
 			filtro.setPassword(Password);
 			filtro.setSalPassword(salt);
-			filtro.setUsername(request.getMail());
+			filtro.setUsername(request.getUsername());
 			filtro.setNumTypeDocument(request.getNumTypeDocument());
 			filtro.setTypeDocument(request.getTypeDocument());
 			AuditEntity auditEntity = new AuditEntity();
@@ -132,7 +141,9 @@ public class UserServiceImpl implements UserService {
 			Query query = new Query();
 			Document fd = new Document();
 			Example<pillihuaman.com.basebd.user.domain.User> example = Example.of(filtroM);
-		} catch (Exception ex) {
+
+		} catch (Exception e) {
+			// TODO: handle exception
 		}
 		return null;
 	}
@@ -154,5 +165,6 @@ public class UserServiceImpl implements UserService {
 		}
 		return id;
 	}
+
 
 }
